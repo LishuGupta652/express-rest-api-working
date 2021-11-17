@@ -3,6 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // Connecting to the database
 mongoose.connect(process.env.MONGODB_URI, () => {
@@ -13,6 +14,7 @@ mongoose.connect(process.env.MONGODB_URI, () => {
 const postRoutes = require("./routes/postRoutes");
 
 // Using middleware for parsing the body of the request
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
