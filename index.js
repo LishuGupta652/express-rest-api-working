@@ -1,13 +1,27 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const dotenv = require("dotenv").config();
+const mongoose = require("mongoose");
+
+// Connecting to the database
+mongoose.connect(process.env.MONGODB_URI, () => {
+  console.log("Connected to database");
+});
+
+// Importing the routes
+const postRoutes = require("./routes/postRoutes");
 
 // Using middleware for parsing the body of the request
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/:name", (req, res) => {
-  res.send([req.query.name, req.params.name, req.body.name]);
+// Using the routes as middlesware
+app.use("/api/posts", postRoutes);
+app.get("/", (req, res) => {
+  res
+    .status(200)
+    .json({ message: "Welcome to the API", routes: ["/api/posts"] });
 });
 
 // Listening to the port
