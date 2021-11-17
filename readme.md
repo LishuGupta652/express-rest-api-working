@@ -27,6 +27,12 @@ npm install
 npm start
 ```
 
+## pushing to web shortcut
+
+```
+git add . && git commit -m "terminal" && git push heroku main && git push origin main
+```
+
 ### autor
 
 > lishugupta652
