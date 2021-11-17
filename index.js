@@ -21,9 +21,22 @@ app.use(express.urlencoded({ extended: true }));
 // Using the routes as middlesware
 app.use("/api/posts", postRoutes);
 app.get("/", (req, res) => {
-  res
-    .status(200)
-    .json({ message: "Welcome to the API", routes: ["/api/posts"] });
+  res.status(200).json({
+    message: "Welcome to the API",
+    routes: {
+      allpost: "/api/posts",
+      postingroute: "/api/posts",
+      specific: "api/posts/:id",
+      delete: "/api/posts/:id",
+      patch: "/api/posts/:id",
+    },
+    schema: {
+      post: {
+        title: "string",
+        content: "string",
+      },
+    },
+  });
 });
 
 // Listening to the port
