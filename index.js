@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGODB_URI, () => {
 
 // Importing the routes
 const postRoutes = require("./routes/postRoutes");
-
+const dataRoutes = require("./routes/dataRoutes");
 // Using middleware for parsing the body of the request
 app.use(cors());
 app.use(express.json());
@@ -20,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Using the routes as middlesware
 app.use("/api/posts", postRoutes);
+app.use("/api/blog/", dataRoutes);
+// using main routes
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Welcome to the API",
@@ -29,6 +31,9 @@ app.get("/", (req, res) => {
       specific: "api/posts/:id",
       delete: "/api/posts/:id",
       patch: "/api/posts/:id",
+    },
+    blogRoute: {
+      blog: "/api/blog/v1",
     },
     schema: {
       post: {
