@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
       blog: "/api/blog/v1",
     },
     nftRoute: {
-      blog: "/api/data/v1",
+      blog: "/api/nft/v1",
     },
     schema: {
       post: {
