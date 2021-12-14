@@ -13,6 +13,7 @@ mongoose.connect(process.env.MONGODB_URI, () => {
 // Importing the routes
 const postRoutes = require("./routes/postRoutes");
 const dataRoutes = require("./routes/dataRoutes");
+const nftRoutes = require("./routes/ntuRoutes");
 // Using middleware for parsing the body of the request
 app.use(cors());
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 // Using the routes as middlesware
 app.use("/api/posts", postRoutes);
 app.use("/api/blog/", dataRoutes);
+app.use("/api/nft/", nftRoutes);
 // using main routes
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -35,8 +37,8 @@ app.get("/", (req, res) => {
     blogRoute: {
       blog: "/api/blog/v1",
     },
-    dataRoute: {
-      blog: "/api/data/nft",
+    nftRoute: {
+      blog: "/api/data/v1",
     },
     schema: {
       post: {
