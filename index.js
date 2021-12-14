@@ -35,6 +35,9 @@ app.get("/", (req, res) => {
     blogRoute: {
       blog: "/api/blog/v1",
     },
+    dataRoute: {
+      blog: "/api/data/nft",
+    },
     schema: {
       post: {
         title: "string",
