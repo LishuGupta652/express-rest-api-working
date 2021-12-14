@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGODB_URI, () => {
 // Importing the routes
 const postRoutes = require("./routes/postRoutes");
 const dataRoutes = require("./routes/dataRoutes");
-const nftRoutes = require("./routes/ntuRoutes");
+const nftRoutes = require("./routes/nftRoutes");
 // Using middleware for parsing the body of the request
 app.use(cors());
 app.use(express.json());
