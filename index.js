@@ -24,10 +24,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/posts", postRoutes);
 app.use("/api/blog/", dataRoutes);
 app.use("/api/nft/", nftRoutes);
-
-//using url shortner routes
-app.set("view engine", "ejs");
 app.use("/s", shortUrlRoutes);
+
+// using url shortner routes
+app.set("view engine", "ejs");
 // using main routes
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -44,6 +44,11 @@ app.get("/", (req, res) => {
     },
     nftRoute: {
       blog: "/api/nft/v1",
+    },
+    shortUrlRoutes: {
+      home: "/s",
+      get: "/s",
+      post: "/s/shortUrls",
     },
     schema: {
       post: {
