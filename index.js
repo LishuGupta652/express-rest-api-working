@@ -14,6 +14,7 @@ mongoose.connect(process.env.MONGODB_URI, () => {
 const postRoutes = require("./routes/postRoutes");
 const dataRoutes = require("./routes/dataRoutes");
 const nftRoutes = require("./routes/nftRoutes");
+const shortUrlRoutes = require("./routes/shortUrlRoutes");
 // Using middleware for parsing the body of the request
 app.use(cors());
 app.use(express.json());
@@ -26,10 +27,7 @@ app.use("/api/nft/", nftRoutes);
 
 //using url shortner routes
 app.set("view engine", "ejs");
-app.get("/s", (req, res) => {
-  res.render("index");
-});
-app.post("/shortUrls", (req, res) => {});
+app.use("/s", shortUrlRoutes);
 // using main routes
 app.get("/", (req, res) => {
   res.status(200).json({
