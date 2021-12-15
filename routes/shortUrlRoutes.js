@@ -11,4 +11,14 @@ router.post("/shortUrls", async (req, res) => {
   console.log(data);
   res.redirect("/s");
 });
+
+router.get("/:shortUrl", async (req, res) => {
+  const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl });
+  if (!shortUrl) return res.status(400).send("No short url found");
+
+  shortUrl.clicks++;
+  shortUrl.save();
+
+  res.redirect(shortUrl.full);
+});
 module.exports = router;
