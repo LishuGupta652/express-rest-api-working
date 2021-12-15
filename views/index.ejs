@@ -37,14 +37,23 @@
         <tbody>
           <% shortUrls.forEach(shortUrl => { %>
 
-          <tr>
+          <tr onclick="deleteUrl">
             <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
-            <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+            <td>
+              <a href="/s/<%= shortUrl.short %>"><%= shortUrl.short %></a>
+            </td>
             <td><% shortUrl.clicks %></td>
           </tr>
           <% }) %>
         </tbody>
       </table>
     </div>
+    <script>
+      function deleteUrl() {
+        if (confirm("Are you sure?")) {
+          window.location.href = "/s/delete";
+        }
+      }
+    </script>
   </body>
 </html>
