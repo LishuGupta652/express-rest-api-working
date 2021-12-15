@@ -5,7 +5,8 @@ router.get("/", (req, res) => {
 });
 
 router.post("/shortUrls", async (req, res) => {
-  await ShortUrl.create({ full: req.body.fullUrl });
+  const data = await ShortUrl.create({ full: req.body.fullUrl });
+  console.log(data);
   res.redirect("/");
 });
 module.exports = router;
