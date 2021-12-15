@@ -23,6 +23,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/posts", postRoutes);
 app.use("/api/blog/", dataRoutes);
 app.use("/api/nft/", nftRoutes);
+
+//using url shortner routes
+app.set("view engine", "ejs");
+app.get("/s", (req, res) => {
+  res.render("index");
+});
 // using main routes
 app.get("/", (req, res) => {
   res.status(200).json({
