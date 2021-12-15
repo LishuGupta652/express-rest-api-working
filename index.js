@@ -29,6 +29,7 @@ app.set("view engine", "ejs");
 app.get("/s", (req, res) => {
   res.render("index");
 });
+app.post("/shortUrls", (req, res) => {});
 // using main routes
 app.get("/", (req, res) => {
   res.status(200).json({
