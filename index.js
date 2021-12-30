@@ -52,6 +52,9 @@ app.get("/", (req, res) => {
       get: "/s",
       post: "/s/shortUrls",
     },
+    techwondoeRoutes: {
+      home: "/api/techwondoe/",
+    },
     schema: {
       post: {
         title: "string",
