@@ -37,22 +37,30 @@
         <tbody>
           <% shortUrls.forEach(shortUrl => { %>
 
-          <tr onclick="deleteUrl">
+          <tr onclick="deleteUrl(event)">
             <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
             <td>
               <a href="/s/<%= shortUrl.short %>"><%= shortUrl.short %></a>
             </td>
-            <td><% shortUrl.clicks %></td>
+            <td>
+              <button onclick="deleteUrl()" class="btn btn-secondary">
+                Delete
+              </button>
+            </td>
           </tr>
           <% }) %>
         </tbody>
       </table>
     </div>
     <script>
-      function deleteUrl() {
+      function deleteUrl(event) {
         console.log("in the delte ");
         if (confirm("Are you sure?")) {
-          window.location.href = "/s/delete";
+          // Get the parent node of the clicked element
+          var parent = event.target.parentNode.parentNode;
+          console.log(parent.childNodes);
+          // Get the text value of child of parent
+          var shortUrl = parent.firstChild.textContent;
         }
       }
     </script>
