@@ -17,9 +17,6 @@ const formData = mongoose.Schema(
     declaration: {
       type: Boolean,
     },
-    audio: {
-      type: String,
-    },
     password: {
       type: String,
     },
