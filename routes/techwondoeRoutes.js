@@ -6,7 +6,8 @@ router.post("/", async (req, res) => {
 
   try {
     const data = await newPost.save();
-    res.send(data);
+    const { _id, password, updatedAt, otherData } = data;
+    res.send(otherData);
   } catch (error) {
     res.status(500).send(error);
   }
