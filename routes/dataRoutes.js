@@ -1,7 +1,9 @@
 const router = require("express").Router();
+// Init cache
+const cache = require("apicache").middleware;
 
 // Geet all post
-router.get("/v1", async (req, res) => {
+router.get("/v1", cache("10 minutes"), async (req, res) => {
   res.status(200).send([
     {
       id: 1,

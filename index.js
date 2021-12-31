@@ -4,6 +4,15 @@ const PORT = process.env.PORT || 3000;
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
+
+// Api rate limiting
+const apiLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 15 minutes
+  max: 50, // limit each IP to 100 requests per windowMs
+});
+app.use(apiLimiter);
+app.set("trust proxy", 1); // trust first proxy
 
 // Connecting to the database
 mongoose.connect(process.env.MONGODB_URI, () => {
